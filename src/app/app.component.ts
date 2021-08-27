@@ -30,7 +30,7 @@ export class AppComponent{
  }
 
  public cargarData(){
-    this.RestService.get("http://localhost:8080/")
+    this.RestService.get("http://localhost:8080/api/country/findAll")
   .subscribe((respuesta:any) => {
     console.log(respuesta)
   })
