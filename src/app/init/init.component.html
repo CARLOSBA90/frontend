@@ -1,0 +1,24 @@
+<!--<div style="margin:auto;max-width:300px">
+    <p>Details:</p>
+    <form class="example" [formGroup]="myform" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="id" name="id">
+    <input type="text" formControlName="name" placeholder="Name" name="name">
+    <button type="submit"><i class="fa fa-search"></i>Save</button>
+    </form>
+</div>-->
+
+<table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>isoCode</th>
+
+    </tr>
+    <tr *ngFor="let country of countries">
+      <td>{{country.id}}</td>
+      <td>{{country.isoCode}}</td>
+      <td>{{country.name}}</td>
+  <!-- <td><button (click)="editData(item)">Edit</button></td>
+      <td><button (click)="deleteUserById(item.id)">Delete</button></td> -->
+    </tr>
+</table>

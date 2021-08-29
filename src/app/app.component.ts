@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { RestService } from './rest.service';
 
 @Component({
   selector: 'app-root',
@@ -13,27 +12,21 @@ import { RestService } from './rest.service';
 
 @Injectable()
 export class AppComponent{
+
   title = 'Titulo';
   text = 'Texto de ejemplo';
 
  //constructor(private http: HttpClient){}
- constructor(private RestService: RestService){}
+/* constructor(public json: JsonService){
+   this.json.getJson('http://localhost:8080/api/country/getCountries').subscribe(
+     (res:any) => {
+     console.log(res);
+     });
+ }
  ngOnInit (){
-   this.cargarData();
- /*  this.http.get("http://localhost:8080/").subscribe((resp:any) =>{
-         this.text = resp;
-   }),
-   (error:any) =>{
-     console.log(error)
-   }*/
-   
+  
+   */
  }
 
- public cargarData(){
-    this.RestService.get("http://localhost:8080/api/country/findAll")
-  .subscribe((respuesta:any) => {
-    console.log(respuesta)
-  })
- }
 
-}
+
