@@ -1,3 +1,59 @@
+
+<table>
+    <tr>
+      <th>Id</th>
+      <th>RUT</th>
+
+    </tr>
+    <tr *ngFor="let titular of titulares">
+      <td>{{titular.id}}</td>
+      <td>{{titular.rut}}</td>
+    </tr>
+</table>
+
+<div>
+    <h3> Crear Titular  </h3>
+    <form (ngSubmit) = "onSubmit()">
+    
+        <div >
+            <label> ID</label>
+            <input type="number" id = "id"
+                [(ngModel)] = "fisica.id" name = "id">
+        </div>
+    
+        <div>
+            <label> RUT</label>
+            <input type="text" id = "rut"
+                [(ngModel)] = "fisica.rut" name = "rut">
+        </div>
+
+        <div>
+            <label> Nombre</label>
+            <input type="text" id = "nombre"
+                [(ngModel)] = "fisica.nombre" name = "nombre">
+        </div>
+
+        <div>
+            <label> Apellido</label>
+            <input type="text" id = "apellido"
+                [(ngModel)] = "fisica.apellido" name = "apellido">
+        </div>
+
+
+                <div>
+            <label> CC</label>
+            <input type="number" id = "cc"
+                [(ngModel)] = "fisica.cc" name = "cc">
+        </div>
+    
+        <button class = "btn btn-success" type ="submit">Submit</button>
+    
+    </form>
+    </div> 
+
+
+
+
 <!--<div style="margin:auto;max-width:300px">
     <p>Details:</p>
     <form class="example" [formGroup]="myform" (ngSubmit)="onSubmit()">
@@ -5,7 +61,7 @@
     <input type="text" formControlName="name" placeholder="Name" name="name">
     <button type="submit"><i class="fa fa-search"></i>Save</button>
     </form>
-</div>-->
+</div>
 
 <table>
     <tr>
@@ -18,7 +74,7 @@
       <td>{{country.id}}</td>
       <td>{{country.isoCode}}</td>
       <td>{{country.name}}</td>
-  <!-- <td><button (click)="editData(item)">Edit</button></td>
-      <td><button (click)="deleteUserById(item.id)">Delete</button></td> -->
+  <td><button (click)="editData(item)">Edit</button></td>
+      <td><button (click)="deleteUserById(item.id)">Delete</button></td> 
     </tr>
-</table>
+</table>-->

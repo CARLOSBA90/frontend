@@ -3,9 +3,13 @@ import { InitService } from '../init.service';
 import {
   FormGroup,
   FormControl,
-  Validators
+  Validators,
+  FormsModule
 } from '@angular/forms';
 import { country } from '../model/country.model';
+import { titular } from '../model/titular.model';
+import { fisica } from '../model/fisica.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-init',
@@ -15,23 +19,22 @@ import { country } from '../model/country.model';
 export class InitComponent implements OnInit {
   //myform: FormGroup;
   data!: [];
-  countries : country[];
+  //countries : country[];
+  titulares : titular[];
 
-  constructor(private initService: InitService) { }
+   fisica: fisica = new fisica();
+
+  constructor(private initService: InitService,
+    private router: Router) { }
 
   ngOnInit(): void {
-  
-    /*this.myform = new FormGroup({
-      id: new FormControl(),
-      isoCode: new FormControl(),
-      name: new FormControl(),
-    });*/
 
-     this.initService.getAllCountries().subscribe((res: any)=>{
+
+     this.initService.getList().subscribe((res: any)=>{
       this.data = res;
       
-      this.countries = res;
-      console.log(this.countries);
+      this.titulares = res;
+      console.log(this.titulares);
     });
   
 
@@ -39,7 +42,7 @@ export class InitComponent implements OnInit {
   }
 
   refreshData(){
-    this.initService.getAllCountries().subscribe((res: any)=>{
+    this.initService.getList().subscribe((res: any)=>{
       this.data = res;
     });
   }
@@ -56,15 +59,20 @@ export class InitComponent implements OnInit {
     this.initService.deleteCountry(id).subscribe((res: any)=>{
       this.refreshData();
     });
+  }*/
+
+
+  saveTitular(){
+    this.initService.createTitular(this.fisica).subscribe( data =>{
+      console.log(data);
+      this.refreshData();
+    },
+    error => console.log(error));
   }
 
   onSubmit(){
-    if (this.myform.valid) {
-        this.initService.saveCountry(this.myform).subscribe((res: any) => {
-          this.refreshData();          
-          this.myform.reset();
-        });
-      }
+    console.log(this.fisica);
+    this.saveTitular();
   }
-*/
+
 }
