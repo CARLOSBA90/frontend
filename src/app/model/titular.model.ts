@@ -5,7 +5,7 @@ export class titular {
 	constructor(){
 	}
 
-	getCountry(){
+	getTitular(){
 		return this.id + ' ' + this.rut
 	}
 

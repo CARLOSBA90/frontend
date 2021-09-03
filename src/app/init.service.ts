@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { fisica } from './model/fisica.model';
+import { juridica } from './model/juridica.model';
 
 
 @Injectable({
@@ -19,8 +20,12 @@ export class InitService {
     return this.http.get<any[]>(this.get);
   }
 
-   createTitular(fisica: fisica): Observable<Object>{
-    return this.http.post(`${this.baseURL}save`, fisica);
+   createFisica(fisica: fisica): Observable<Object>{
+    return this.http.post(`${this.baseURL}save/fisica`, fisica);
+  }
+
+  createJuridica(juridica: juridica): Observable<Object>{
+    return this.http.post(`${this.baseURL}save/juridica`, juridica);
   }
 
 

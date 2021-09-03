@@ -1,80 +1,100 @@
+<div id="panel">
+  <h2>REGISTRO DE CUENTA</h2>
 
-<table>
+  <form [formGroup]="formulario" (ngSubmit) = "onSubmit()">
+    <table>
     <tr>
-      <th>Id</th>
-      <th>RUT</th>
+      <td>
+    <label> Tipo de cuenta </label>
+     </td>
+     <td>
+      <input type="radio" value="fisica" name="tipo" formControlName="tipo"> Fisica
+        <input type="radio" value="juridica" name="tipo" formControlName="tipo"> Juridica
+    </td>
+  </tr>
 
-    </tr>
-    <tr *ngFor="let titular of titulares">
-      <td>{{titular.id}}</td>
-      <td>{{titular.rut}}</td>
-    </tr>
-</table>
-
-<div>
-    <h3> Crear Titular  </h3>
-    <form (ngSubmit) = "onSubmit()">
-    
-        <div >
-            <label> ID</label>
-            <input type="number" id = "id"
-                [(ngModel)] = "fisica.id" name = "id">
-        </div>
-    
-        <div>
-            <label> RUT</label>
-            <input type="text" id = "rut"
-                [(ngModel)] = "fisica.rut" name = "rut">
-        </div>
-
-        <div>
-            <label> Nombre</label>
-            <input type="text" id = "nombre"
-                [(ngModel)] = "fisica.nombre" name = "nombre">
-        </div>
-
-        <div>
-            <label> Apellido</label>
-            <input type="text" id = "apellido"
-                [(ngModel)] = "fisica.apellido" name = "apellido">
-        </div>
-
-
-                <div>
-            <label> CC</label>
-            <input type="number" id = "cc"
-                [(ngModel)] = "fisica.cc" name = "cc">
-        </div>
-    
-        <button class = "btn btn-success" type ="submit">Submit</button>
-    
-    </form>
-    </div> 
-
-
-
-
-<!--<div style="margin:auto;max-width:300px">
-    <p>Details:</p>
-    <form class="example" [formGroup]="myform" (ngSubmit)="onSubmit()">
-    <input type="hidden" formControlName="id" name="id">
-    <input type="text" formControlName="name" placeholder="Name" name="name">
-    <button type="submit"><i class="fa fa-search"></i>Save</button>
-    </form>
-</div>
-
-<table>
+  <ng-container *ngIf="tipo.value === 'fisica'">
     <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>isoCode</th>
+      <td>
+        <label>RUT</label>
+      </td>
+      <td>
+        <input type="text" id = "rut"
+          [(ngModel)] = "fisica.rut" name = "rut" [ngModelOptions]="{standalone: true}">
+      </td>
+    </tr>
 
+    <tr>
+      <td>
+        <label>Nombre</label>
+      </td>
+      <td>
+        <input type="text" id = "nombre"
+        [(ngModel)] = "fisica.nombre" name = "nombre" [ngModelOptions]="{standalone: true}">
+      </td>
     </tr>
-    <tr *ngFor="let country of countries">
-      <td>{{country.id}}</td>
-      <td>{{country.isoCode}}</td>
-      <td>{{country.name}}</td>
-  <td><button (click)="editData(item)">Edit</button></td>
-      <td><button (click)="deleteUserById(item.id)">Delete</button></td> 
+
+    <tr>
+      <td>
+        <label>Apellido</label>
+      </td>
+      <td>
+        <input type="text" id = "apellido"
+          [(ngModel)] = "fisica.apellido" name = "apellido" [ngModelOptions]="{standalone: true}">
+      </td>
     </tr>
-</table>-->
+
+    <tr>
+      <td>
+        <label>CC</label>
+      </td>
+      <td>
+        <input type="number" id = "cc"
+        [(ngModel)] = "fisica.cc" name = "cc" max="199999" [ngModelOptions]="{standalone: true}">
+      </td>
+    </tr>
+  </ng-container>
+
+  <ng-container *ngIf="tipo.value === 'juridica'">
+
+    <tr>
+      <td>
+        <label>RUT</label>
+      </td>
+      <td>
+        <input type="text" id = "rut"
+        [(ngModel)] = "juridica.rut" name = "rut" [ngModelOptions]="{standalone: true}">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label> Razón Social</label>
+      </td>
+      <td>
+        <input type="text" id = "razonSocial"
+        [(ngModel)] = "juridica.razonSocial" name = "razonSocial" [ngModelOptions]="{standalone: true}">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label> Año de fundación</label>
+      </td>
+      <td>
+        <input type="number" id = "anioFundacion"
+        [(ngModel)] = "juridica.anioFundacion" name = "anioFundacion"
+        min="1880" max="2021" step="1" value="2020" [ngModelOptions]="{standalone: true}"/>
+      </td>
+    </tr>
+
+  </ng-container>
+
+
+
+     <br>
+    <button type ="submit">Enviar</button>
+  </table>
+  </form>
+
+  </div>

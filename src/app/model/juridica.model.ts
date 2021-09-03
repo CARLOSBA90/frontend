@@ -7,7 +7,7 @@ export class juridica extends titular {
 		super();
 	}
 
-	getCountry(){
+	getJuridica(){
 		return this.razonSocial + ' ' + this.anioFundacion
 	}
 

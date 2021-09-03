@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { InitService } from '../init.service';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormsModule
-} from '@angular/forms';
-import { country } from '../model/country.model';
+import { FormControl, FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { titular } from '../model/titular.model';
 import { fisica } from '../model/fisica.model';
+import { juridica } from '../model/juridica.model';
 import { Router } from '@angular/router';
+import { throwIfEmpty } from 'rxjs/operators';
 
 @Component({
   selector: 'app-init',
@@ -17,29 +13,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./init.component.css']
 })
 export class InitComponent implements OnInit {
-  //myform: FormGroup;
+
+  constructor(private initService: InitService,
+    private router: Router, private fb: FormBuilder) {
+     }
+
+  formulario: FormGroup = this.fb.group({
+    tipo: ['', Validators.required],
+  });
   data!: [];
   //countries : country[];
   titulares : titular[];
 
    fisica: fisica = new fisica();
+   juridica: juridica = new juridica();
 
-  constructor(private initService: InitService,
-    private router: Router) { }
+
 
   ngOnInit(): void {
 
+    this.handleTipo();
 
      this.initService.getList().subscribe((res: any)=>{
       this.data = res;
-      
+
       this.titulares = res;
       console.log(this.titulares);
     });
-  
+
 
    // this.refreshData();
   }
+
 
   refreshData(){
     this.initService.getList().subscribe((res: any)=>{
@@ -61,18 +66,64 @@ export class InitComponent implements OnInit {
     });
   }*/
 
+  get tipo() {
+    return this.formulario.get('tipo') as FormControl;
+  }
 
-  saveTitular(){
-    this.initService.createTitular(this.fisica).subscribe( data =>{
+  handleTipo() {
+    this.tipo.valueChanges.subscribe((res: any) => {
+      if (res == 'fisica') {
+        this.juridica = new juridica(); // poniendo en valor nulo el objecto //
+      /*  this.formulario.removeControl('tipo');
+        this.formulario.addControl('tipo',
+          this.fb.control('', [Validators.required]));*/
+
+      } else if (res == 'juridica'){
+        this.fisica = new fisica(); // poniendo en valor nulo el objecto //
+
+      }
+    });
+  }
+
+  saveFisica(res: any){
+/*    this.initService.createTitular(this.fisica).subscribe( data =>{
+      console.log(data);
+      this.refreshData();
+    },
+    error => console.log(error));*/
+    this.initService.createFisica(res).subscribe( data =>{
       console.log(data);
       this.refreshData();
     },
     error => console.log(error));
+
   }
 
+  saveJuridica(res: any){
+        this.initService.createJuridica(res).subscribe( data =>{
+          console.log(data);
+          this.refreshData();
+        },
+        error => console.log(error));
+
+      }
+
   onSubmit(){
-    console.log(this.fisica);
-    this.saveTitular();
+     /// Requerido: metodos de validación para enviar correctamente la data
+     if(!this.isObjectEmpty(this.fisica)){
+       console.log("Enviando fisica");
+       this.saveFisica(this.fisica);
+     }else if(!this.isObjectEmpty(this.juridica)){
+      console.log("Enviando juridica");
+      this.saveJuridica(this.juridica);
+     }
+
+    //console.log(this.juridica);
+    //this.saveTitular();
   }
+
+  isObjectEmpty(res: any) {
+    return Object.keys(res).length === 0;
+}
 
 }
