@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { InitComponent } from './init/init.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InitComponent
+    InitComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

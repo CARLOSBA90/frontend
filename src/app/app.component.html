@@ -1,19 +1,14 @@
-<!-- INICIO 
-<div >
+<h1> {{title}}</h1>
+<nav>
+    <button (click) ="toAdd()"> Alta Titular</button>
+    <button (click) ="toList()"> Lista de Titulares</button>
+</nav>
 
-Plantilla base
-Ejemplo: 
-   <br> Titulo => {{title}}
-   <br> Texto => {{text}}
+<hr>
+<div *ngIf="create">
+    <app-init></app-init>
+  </div>
+<div *ngIf="list">
+  <app-list></app-list>
 
-   <div>
-    <ul>
-      <li>
-        
-    </li>
-  </ul>
-   </div>
 </div>
-
- -->
-<router-outlet></router-outlet>

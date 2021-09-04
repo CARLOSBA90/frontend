@@ -12,20 +12,19 @@ import { catchError, retry } from 'rxjs/operators';
 
 @Injectable()
 export class AppComponent{
+  title = 'CRUD: Titulares y cuentas';
+  create = false;
+  list = false;
 
-  title = 'Titulo';
-  text = 'Texto de ejemplo';
+  toAdd(){
+    this.create = true;
+    this.list = false;
+         }
 
- //constructor(private http: HttpClient){}
-/* constructor(public json: JsonService){
-   this.json.getJson('http://localhost:8080/api/country/getCountries').subscribe(
-     (res:any) => {
-     console.log(res);
-     });
- }
- ngOnInit (){
-  
-   */
+  toList(){
+    this.create = false;
+    this.list = true;
+  }
  }
 
 

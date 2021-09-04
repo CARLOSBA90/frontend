@@ -22,7 +22,6 @@ export class InitComponent implements OnInit {
     tipo: ['', Validators.required],
   });
   data!: [];
-  //countries : country[];
   titulares : titular[];
 
    fisica: fisica = new fisica();
@@ -33,14 +32,14 @@ export class InitComponent implements OnInit {
   ngOnInit(): void {
 
     this.handleTipo();
-
+/*
      this.initService.getList().subscribe((res: any)=>{
       this.data = res;
 
       this.titulares = res;
       console.log(this.titulares);
     });
-
+*/
 
    // this.refreshData();
   }
