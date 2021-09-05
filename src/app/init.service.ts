@@ -10,6 +10,7 @@ import { juridica } from './model/juridica.model';
   providedIn: 'root'
 })
 export class InitService {
+
   private  get = 'http://localhost:8080/api/titular/get';
 
   private baseURL = "http://localhost:8080/api/titular/";
@@ -18,6 +19,13 @@ export class InitService {
 
   public getList(): Observable<any[]> {
     return this.http.get<any[]>(this.get);
+  }
+  public getListFisica(): Observable<any[]> {
+    return this.http.get<any[]>(this.get+"/fisica");
+  }
+
+  public getListJuridica(): Observable<any[]> {
+    return this.http.get<any[]>(this.get+"/juridica");
   }
 
    createFisica(fisica: fisica): Observable<Object>{

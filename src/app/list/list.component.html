@@ -1,13 +1,25 @@
+<h2> Lista de personas fisicas</h2>
 <table>
-  <th *ngFor = "let column of headers" >
+  <th *ngFor = "let column of headersF" >
     {{column}}
   </th>
 
-  <tr *ngFor = "let row of rows">
-    <td *ngFor = "let column of headers">
+  <tr *ngFor = "let row of rowsF">
+    <td *ngFor = "let column of headersF">
       {{row[column]}}
     </td>
   </tr>
+</table>
 
+<h2> Lista de personas juridicas</h2>
+<table>
+  <th *ngFor = "let column of headersJ" >
+    {{column}}
+  </th>
 
+  <tr *ngFor = "let row of rowsJ">
+    <td *ngFor = "let column of headersJ">
+      {{row[column]}}
+    </td>
+  </tr>
 </table>

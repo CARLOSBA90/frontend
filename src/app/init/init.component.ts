@@ -27,6 +27,8 @@ export class InitComponent implements OnInit {
    fisica: fisica = new fisica();
    juridica: juridica = new juridica();
 
+   mensaje : object;
+
 
 
   ngOnInit(): void {
@@ -85,14 +87,12 @@ export class InitComponent implements OnInit {
   }
 
   saveFisica(res: any){
-/*    this.initService.createTitular(this.fisica).subscribe( data =>{
-      console.log(data);
-      this.refreshData();
-    },
-    error => console.log(error));*/
     this.initService.createFisica(res).subscribe( data =>{
-      console.log(data);
-      this.refreshData();
+     // console.log(data);
+    //  this.refreshData();
+    this.fisica = new fisica();
+    this.mensaje = data.toString;
+
     },
     error => console.log(error));
 
@@ -100,8 +100,10 @@ export class InitComponent implements OnInit {
 
   saveJuridica(res: any){
         this.initService.createJuridica(res).subscribe( data =>{
-          console.log(data);
-          this.refreshData();
+         // console.log(data);
+         // this.refreshData();
+         this.juridica = new juridica();
+         this.mensaje = data.toString;
         },
         error => console.log(error));
 

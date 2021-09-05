@@ -2,6 +2,7 @@ export class titular {
 	id: number;
 	rut: string;
 
+
 	constructor(){
 	}
 

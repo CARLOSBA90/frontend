@@ -14,7 +14,9 @@ import { throwIfEmpty } from 'rxjs/operators';
 })
 export class ListComponent implements OnInit {
 
-  headers = ["id","rut"];
+  headersF = ["rut","nombre","apellido","cc"];
+
+  headersJ = ["rut","razonSocial","anioFundacion"];
 
   constructor(private initService: InitService,
     private router: Router, private fb: FormBuilder) {
@@ -22,18 +24,26 @@ export class ListComponent implements OnInit {
 
      data!: [];
      titulares : titular[];
+     juridicas : juridica[];
+     fisicas : fisica [];
 
-     rows!: [];
+     rowsF!: [];
+     rowsJ!: [];
+
 
   ngOnInit(): void {
 
-    this.initService.getList().subscribe((res: any)=>{
-      this.data = res;
-
-      this.titulares = res;
-      this.rows = res;
-      console.log(this.titulares);
+    this.initService.getListFisica().subscribe((res: any)=>{
+      this.fisicas = res;
+      this.rowsF = res;
+     // console.log(res);
     });
+
+    this.initService.getListJuridica().subscribe((res: any)=>{
+      this.juridicas = res;
+      this.rowsJ = res;
+    });
+
 
   }
 
