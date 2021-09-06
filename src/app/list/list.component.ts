@@ -13,35 +13,25 @@ import { throwIfEmpty } from 'rxjs/operators';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
-  headersF = ["rut","nombre","apellido","cc"];
-
-  headersJ = ["rut","razonSocial","anioFundacion"];
+  headersF = ["rut","nombre","apellido","cc","delete","update"];
+  headersJ = ["rut","razonSocial","anioFundacion","delete","update"];
+  data!: [];
+  juridicas : juridica[];
+  fisicas : fisica [];
 
   constructor(private initService: InitService,
     private router: Router, private fb: FormBuilder) {
      }
 
-     data!: [];
-     titulares : titular[];
-     juridicas : juridica[];
-     fisicas : fisica [];
-
-     rowsF!: [];
-     rowsJ!: [];
-
-
   ngOnInit(): void {
 
     this.initService.getListFisica().subscribe((res: any)=>{
       this.fisicas = res;
-      this.rowsF = res;
      // console.log(res);
     });
 
     this.initService.getListJuridica().subscribe((res: any)=>{
       this.juridicas = res;
-      this.rowsJ = res;
     });
 
 
