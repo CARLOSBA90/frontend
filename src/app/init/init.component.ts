@@ -91,7 +91,7 @@ export class InitComponent implements OnInit {
      // console.log(data);
     //  this.refreshData();
     this.fisica = new fisica();
-    this.mensaje = data.toString;
+    this.mensaje= data;
 
     },
     error => console.log(error));
@@ -103,7 +103,7 @@ export class InitComponent implements OnInit {
          // console.log(data);
          // this.refreshData();
          this.juridica = new juridica();
-         this.mensaje = data.toString;
+         this.mensaje = data;
         },
         error => console.log(error));
 
