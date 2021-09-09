@@ -4,6 +4,7 @@ import { FormControl, FormArray, FormBuilder, Validators, FormGroup } from '@ang
 import { titular } from '../model/titular.model';
 import { fisica } from '../model/fisica.model';
 import { juridica } from '../model/juridica.model';
+import { mensaje } from '../model/mensaje.model';
 import { Router } from '@angular/router';
 import { throwIfEmpty } from 'rxjs/operators';
 
@@ -21,37 +22,18 @@ export class InitComponent implements OnInit {
   formulario: FormGroup = this.fb.group({
     tipo: ['', Validators.required],
   });
-  data!: [];
-  titulares : titular[];
 
    fisica: fisica = new fisica();
    juridica: juridica = new juridica();
 
-   mensaje : object;
+   mensaje: any = [];
 
 
 
   ngOnInit(): void {
-
     this.handleTipo();
-/*
-     this.initService.getList().subscribe((res: any)=>{
-      this.data = res;
-
-      this.titulares = res;
-      console.log(this.titulares);
-    });
-*/
-
-   // this.refreshData();
   }
 
-
-  refreshData(){
-    this.initService.getList().subscribe((res: any)=>{
-      this.data = res;
-    });
-  }
 /*
   editData(data){
     this.myform.patchValue({
@@ -75,9 +57,6 @@ export class InitComponent implements OnInit {
     this.tipo.valueChanges.subscribe((res: any) => {
       if (res == 'fisica') {
         this.juridica = new juridica(); // poniendo en valor nulo el objecto //
-      /*  this.formulario.removeControl('tipo');
-        this.formulario.addControl('tipo',
-          this.fb.control('', [Validators.required]));*/
 
       } else if (res == 'juridica'){
         this.fisica = new fisica(); // poniendo en valor nulo el objecto //
@@ -88,11 +67,8 @@ export class InitComponent implements OnInit {
 
   saveFisica(res: any){
     this.initService.createFisica(res).subscribe( data =>{
-     // console.log(data);
-    //  this.refreshData();
     this.fisica = new fisica();
-    this.mensaje= data;
-
+    this.mensaje = data;
     },
     error => console.log(error));
 
@@ -100,8 +76,6 @@ export class InitComponent implements OnInit {
 
   saveJuridica(res: any){
         this.initService.createJuridica(res).subscribe( data =>{
-         // console.log(data);
-         // this.refreshData();
          this.juridica = new juridica();
          this.mensaje = data;
         },
@@ -112,15 +86,14 @@ export class InitComponent implements OnInit {
   onSubmit(){
      /// Requerido: metodos de validación para enviar correctamente la data
      if(!this.isObjectEmpty(this.fisica)){
-       console.log("Enviando fisica");
+       console.log("Enviando persona fisica");
        this.saveFisica(this.fisica);
      }else if(!this.isObjectEmpty(this.juridica)){
-      console.log("Enviando juridica");
+      console.log("Enviando persona juridica");
       this.saveJuridica(this.juridica);
      }
 
-    //console.log(this.juridica);
-    //this.saveTitular();
+
   }
 
   isObjectEmpty(res: any) {
