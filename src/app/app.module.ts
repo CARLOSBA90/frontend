@@ -9,12 +9,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { MatTableModule } from '@angular/material/table';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InitComponent,
-    ListComponent
+    ListComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

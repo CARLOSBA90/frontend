@@ -5,6 +5,7 @@ import { titular } from '../model/titular.model';
 import { fisica } from '../model/fisica.model';
 import { juridica } from '../model/juridica.model';
 import { Router } from '@angular/router';
+import { mensaje } from '../model/mensaje.model';
 import { throwIfEmpty } from 'rxjs/operators';
 
 @Component({
@@ -15,9 +16,9 @@ import { throwIfEmpty } from 'rxjs/operators';
 export class ListComponent implements OnInit {
   headersF = ["rut","nombre","apellido","cc","delete","update"];
   headersJ = ["rut","razonSocial","anioFundacion","delete","update"];
-  data!: [];
   juridicas : juridica[];
   fisicas : fisica [];
+  mensaje: mensaje = new mensaje();
 
   constructor(private initService: InitService,
     private router: Router, private fb: FormBuilder) {
@@ -25,16 +26,29 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.list();
+
+
+  }
+
+  deleteTitular(id: number){
+    this.initService.deleteTitular(id).subscribe( (res: any) => {
+      this.mensaje = res;
+      this.list();
+    })
+  }
+
+  list(){
     this.initService.getListFisica().subscribe((res: any)=>{
       this.fisicas = res;
-     // console.log(res);
     });
 
     this.initService.getListJuridica().subscribe((res: any)=>{
       this.juridicas = res;
     });
 
-
   }
+
+
 
 }

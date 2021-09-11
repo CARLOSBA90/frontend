@@ -36,5 +36,9 @@ export class InitService {
     return this.http.post(`${this.baseURL}save/juridica`, juridica);
   }
 
+  public deleteTitular(id: number): Observable<Object>{
+    return this.http.delete(`${this.baseURL}/delete/${id}`);
+  }
+
 
 }

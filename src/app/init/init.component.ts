@@ -26,7 +26,7 @@ export class InitComponent implements OnInit {
    fisica: fisica = new fisica();
    juridica: juridica = new juridica();
 
-   mensaje: any = [];
+   mensaje: mensaje = new mensaje();
 
 
 
@@ -66,16 +66,16 @@ export class InitComponent implements OnInit {
   }
 
   saveFisica(res: any){
-    this.initService.createFisica(res).subscribe( data =>{
+    this.initService.createFisica(res).subscribe( (data: any) =>{
     this.fisica = new fisica();
     this.mensaje = data;
+    console.log(data);
     },
     error => console.log(error));
 
   }
-
   saveJuridica(res: any){
-        this.initService.createJuridica(res).subscribe( data =>{
+        this.initService.createJuridica(res).subscribe( (data: any) =>{
          this.juridica = new juridica();
          this.mensaje = data;
         },
