@@ -38,6 +38,10 @@ export class ListComponent implements OnInit {
     })
   }
 
+  updateTitular(id: number, type: number){
+    this.router.navigate(['update', id, type]);
+  }
+
   list(){
     this.initService.getListFisica().subscribe((res: any)=>{
       this.fisicas = res;
