@@ -5,10 +5,12 @@
 </nav>
 
 <hr>
+<router-outlet></router-outlet>
 <div *ngIf="create">
     <app-init></app-init>
   </div>
 <div *ngIf="list">
   <app-list></app-list>
+
 
 </div>

@@ -1,17 +1,17 @@
 <div id="panel">
   <h2>ACTUALIZACIÓN</h2>
 
-  <form [formGroup]="formulario" (ngSubmit) = "onSubmit()">
+  <form (ngSubmit) = "onSubmit()">
     <table>
 
-  <ng-container *ngIf="tipo.value === 'fisica'">
+  <ng-container *ngIf="type ==1">
     <tr>
       <td>
         <label>RUT</label>
       </td>
       <td>
         <input type="text" id = "rut"
-          [(ngModel)] = "fisica.rut" name = "rut" [ngModelOptions]="{standalone: true}">
+          [(ngModel)] = "fisicaUpdate.rut" name = "rut" [ngModelOptions]="{standalone: true}">
       </td>
     </tr>
 
@@ -21,7 +21,7 @@
       </td>
       <td>
         <input type="text" id = "nombre"
-        [(ngModel)] = "fisica.nombre" name = "nombre" [ngModelOptions]="{standalone: true}">
+        [(ngModel)] = "fisicaUpdate.nombre" name = "nombre" [ngModelOptions]="{standalone: true}">
       </td>
     </tr>
 
@@ -31,7 +31,7 @@
       </td>
       <td>
         <input type="text" id = "apellido"
-          [(ngModel)] = "fisica.apellido" name = "apellido" [ngModelOptions]="{standalone: true}">
+          [(ngModel)] = "fisicaUpdate.apellido" name = "apellido" [ngModelOptions]="{standalone: true}">
       </td>
     </tr>
 
@@ -41,12 +41,12 @@
       </td>
       <td>
         <input type="number" id = "cc"
-        [(ngModel)] = "fisica.cc" name = "cc" max="199999" [ngModelOptions]="{standalone: true}">
+        [(ngModel)] = "fisicaUpdate.cc" name = "cc" max="199999" [ngModelOptions]="{standalone: true}">
       </td>
     </tr>
   </ng-container>
 
-  <ng-container *ngIf="tipo.value === 'juridica'">
+  <ng-container *ngIf="type == 2">
 
     <tr>
       <td>
@@ -54,7 +54,7 @@
       </td>
       <td>
         <input type="text" id = "rut"
-        [(ngModel)] = "juridica.rut" name = "rut" [ngModelOptions]="{standalone: true}">
+        [(ngModel)] = "juridicaUpdate.rut" name = "rut" [ngModelOptions]="{standalone: true}">
       </td>
     </tr>
 
@@ -64,7 +64,7 @@
       </td>
       <td>
         <input type="text" id = "razonSocial"
-        [(ngModel)] = "juridica.razonSocial" name = "razonSocial" [ngModelOptions]="{standalone: true}">
+        [(ngModel)] = "juridicaUpdate.razonSocial" name = "razonSocial" [ngModelOptions]="{standalone: true}">
       </td>
     </tr>
 
@@ -74,7 +74,7 @@
       </td>
       <td>
         <input type="number" id = "anioFundacion"
-        [(ngModel)] = "juridica.anioFundacion" name = "anioFundacion"
+        [(ngModel)] = "juridicaUpdate.anioFundacion" name = "anioFundacion"
         min="1880" max="2021" step="1" value="2020" [ngModelOptions]="{standalone: true}"/>
       </td>
     </tr>
@@ -88,6 +88,5 @@
   </table>
   </form>
 
-  {{mensaje.texto}}
 
   </div>

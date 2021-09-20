@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InitComponent } from './init/init.component';
+import { ListComponent } from './list/list.component';
+import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
- {path: '', component: InitComponent}
+ {path: 'InitComponent', component: InitComponent},
+ {path: 'update/:id/:type', component: UpdateComponent},
+ {path: 'list', component: ListComponent}
 ];
 
 @NgModule({

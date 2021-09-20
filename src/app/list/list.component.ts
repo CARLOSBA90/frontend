@@ -39,6 +39,7 @@ export class ListComponent implements OnInit {
   }
 
   updateTitular(id: number, type: number){
+    this.router.dispose;
     this.router.navigate(['update', id, type]);
   }
 

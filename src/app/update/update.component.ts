@@ -15,19 +15,49 @@ import { throwIfEmpty } from 'rxjs/operators';
 })
 export class UpdateComponent implements OnInit {
 
+
+
   id: number;
   type: number;
+  fisicaUpdate: fisica;
+  juridicaUpdate: juridica;
 
   constructor(private initService: InitService,
-    private router: Router, private fb: FormBuilder,  private route: ActivatedRoute,) { }
+    private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+   console.log("entrada a updatecomponent");
     this.id = this.route.snapshot.params['id'];
     this.type = this.route.snapshot.params['type'];
 
-    /// Atrapar titular, juridica o fisica (TRAER OTRO PARAMETRO, PARA BUSCAR EL TITULAR, j o f)
-    this.initService.
+    if(this.type==1){
+        this.initService.getFisicaById(this.id).subscribe((res: any) =>{
+        this.fisicaUpdate = new fisica();
+        this.fisicaUpdate = res;
+        });
+
+    }else if (this.type==2){
+      this.initService.getJuridicaById(this.id).subscribe((res: any) =>{
+      this.juridicaUpdate = new juridica();
+      this.juridicaUpdate = res;
+        });
+    }
+
+  }
+
+  onSubmit(){
+
+    if(this.type==1){
+        this.initService.updateFisica(this.id, this.fisicaUpdate).subscribe( /*(res: any) =>{}*/);
+         }else if(this.type==2){
+        this.initService.updateJuridica(this.id, this.juridicaUpdate).subscribe( /*(res: any) =>{}*/);
+    }
+
+    this.goToList();
+  }
+
+  goToList(){
+    this.router.navigate(['/list']);
   }
 
 }

@@ -28,16 +28,33 @@ export class InitService {
     return this.http.get<any[]>(this.get+"/juridica");
   }
 
-   createFisica(fisica: fisica): Observable<Object>{
+  public createFisica(fisica: fisica): Observable<Object>{
     return this.http.post(`${this.baseURL}save/fisica`, fisica);
   }
 
-  createJuridica(juridica: juridica): Observable<Object>{
+  public createJuridica(juridica: juridica): Observable<Object>{
     return this.http.post(`${this.baseURL}save/juridica`, juridica);
   }
 
   public deleteTitular(id: number): Observable<Object>{
     return this.http.delete(`${this.baseURL}/delete/${id}`);
+  }
+
+  public getFisicaById(id: number): Observable<fisica> {
+    return this.http.get<fisica>(this.get+`/fisica/${id}`);
+  }
+
+  public getJuridicaById(id: number): Observable<juridica> {
+    return this.http.get<juridica>(this.get+`/juridica/${id}`);
+  }
+
+
+  public updateFisica(id: number, fisica : fisica): Observable<Object> {
+    return this.http.put(`${this.baseURL}save/fisica`, fisica);
+  }
+
+  public updateJuridica(id: number, juridica : juridica): Observable<Object> {
+    return this.http.put(`${this.baseURL}save/juridica`, juridica);
   }
 
 
