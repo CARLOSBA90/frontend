@@ -50,11 +50,11 @@ export class InitService {
 
 
   public updateFisica(id: number, fisica : fisica): Observable<Object> {
-    return this.http.put(`${this.baseURL}save/fisica`, fisica);
+    return this.http.put(`${this.baseURL}update/fisica/${id}`, fisica);
   }
 
   public updateJuridica(id: number, juridica : juridica): Observable<Object> {
-    return this.http.put(`${this.baseURL}save/juridica`, juridica);
+    return this.http.put(`${this.baseURL}update/juridica/${id}`, juridica);
   }
 
 

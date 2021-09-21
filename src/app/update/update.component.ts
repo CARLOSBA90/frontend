@@ -21,6 +21,7 @@ export class UpdateComponent implements OnInit {
   type: number;
   fisicaUpdate: fisica;
   juridicaUpdate: juridica;
+  isLoaded : boolean = false;
 
   constructor(private initService: InitService,
     private router: Router, private route: ActivatedRoute) { }
@@ -43,6 +44,8 @@ export class UpdateComponent implements OnInit {
         });
     }
 
+    this.isLoaded = true;
+
   }
 
   onSubmit(){
@@ -57,6 +60,7 @@ export class UpdateComponent implements OnInit {
   }
 
   goToList(){
+    this.router.dispose;
     this.router.navigate(['/list']);
   }
 
