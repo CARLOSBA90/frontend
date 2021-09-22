@@ -25,10 +25,7 @@ export class ListComponent implements OnInit {
      }
 
   ngOnInit(): void {
-
     this.list();
-
-
   }
 
   deleteTitular(id: number){
@@ -52,6 +49,10 @@ export class ListComponent implements OnInit {
       this.juridicas = res;
     });
 
+  }
+
+  refresh(){
+    this.list();
   }
 
 

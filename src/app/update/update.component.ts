@@ -15,16 +15,17 @@ import { throwIfEmpty } from 'rxjs/operators';
 })
 export class UpdateComponent implements OnInit {
 
-
-
   id: number;
   type: number;
-  fisicaUpdate: fisica;
-  juridicaUpdate: juridica;
+  fisicaUpdate!: fisica;
+  juridicaUpdate!: juridica;
   isLoaded : boolean = false;
 
   constructor(private initService: InitService,
-    private router: Router, private route: ActivatedRoute) { }
+    private router: Router, private route: ActivatedRoute) {
+      this.fisicaUpdate = new fisica();
+      this.juridicaUpdate = new juridica();
+    }
 
   ngOnInit(): void {
    console.log("entrada a updatecomponent");
@@ -61,7 +62,6 @@ export class UpdateComponent implements OnInit {
 
   goToList(){
     this.router.dispose;
-    this.router.navigate(['/list']);
   }
 
 }

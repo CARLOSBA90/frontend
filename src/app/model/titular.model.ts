@@ -4,6 +4,8 @@ export class titular {
 
 
 	constructor(){
+    this.id = 0;
+    this.rut = '';
 	}
 
 	getTitular(){

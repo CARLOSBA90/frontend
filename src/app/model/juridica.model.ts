@@ -5,6 +5,8 @@ export class juridica extends titular {
 
 	constructor(){
 		super();
+    this.razonSocial = '';
+    this.anioFundacion = 0;
 	}
 
 	getJuridica(){
