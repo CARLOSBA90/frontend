@@ -12,7 +12,7 @@ import { catchError, retry } from 'rxjs/operators';
 
 @Injectable()
 export class AppComponent{
-  title = 'CRUD: Titulares y cuentas';
+  title = 'CRUD: Titulares';
   create = false;
   list = false;
 

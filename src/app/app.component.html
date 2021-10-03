@@ -1,15 +1,38 @@
-<h1> {{title}}</h1>
-<nav>
-    <button (click) ="toAdd()"> Alta Titular</button>
-    <button (click) ="toList()"> Lista de Titulares</button>
-</nav>
+<div class="container">
+  <div class="row mb-3 justify-content-md-center">
 
-<hr>
-<router-outlet></router-outlet>
-<div *ngIf="create">
-    <app-init></app-init>
+    <div class="col-md-auto">
+      <h1 class="display-4" > {{title}}</h1>
+    </div>
+
   </div>
-<div *ngIf="list">
-  <app-list></app-list>
+  <div class="row mb-3 justify-content-md-center">
+    <div class="col-sm-3">
+      <button type="button" class="btn btn-primary btn-lg btn-block" (click) ="toAdd()"> Alta Titular</button>
+    </div>
+    <div class="col-sm-3">
+      <button type="button" class="btn btn-primary btn-lg btn-block" (click) ="toList()"> Lista de Titulares</button>
+    </div>
+  </div>
+
+  <div class="row mb-3 justify-content-md-center">
+  <div class="col-sm-8" *ngIf="create">
+      <app-init></app-init>
+    </div>
+  </div>
+
+  <div class="row mb-3 justify-content-md-center">
+  <div  class="col-sm-8" *ngIf="list">
+    <app-list></app-list>
+  </div>
+  </div>
+
+
+  <div class="row mb-3 justify-content-md-center">
+  <div  class="col-sm-8" >
+  <router-outlet></router-outlet>
+  </div>
+  </div>
+
 
 </div>
