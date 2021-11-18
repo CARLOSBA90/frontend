@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { InitService } from '../init.service';
 import { FormControl, FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { titular } from '../model/titular.model';
 import { fisica } from '../model/fisica.model';
 import { juridica } from '../model/juridica.model';
+import { actualizar } from '../model/actualizar.model';
 import { Router } from '@angular/router';
 import { mensaje } from '../model/mensaje.model';
 import { throwIfEmpty } from 'rxjs/operators';
@@ -19,6 +20,8 @@ export class ListComponent implements OnInit {
   juridicas : juridica[];
   fisicas : fisica [];
   mensaje: mensaje = new mensaje();
+  @Output() actualizar = new EventEmitter<actualizar>();
+
 
   constructor(private initService: InitService,
     private router: Router, private fb: FormBuilder) {
@@ -36,8 +39,10 @@ export class ListComponent implements OnInit {
   }
 
   updateTitular(id: number, type: number){
-    this.router.dispose;
-    this.router.navigate(['/update', id, type]);
+   // this.router.dispose;
+   //  this.router.navigate(['/update', id, type]);
+   this.actualizar.emit(new actualizar(id,type));
+
   }
 
   list(){
