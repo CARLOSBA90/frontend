@@ -2,36 +2,36 @@
   <div class="row mb-3 justify-content-md-center">
 
     <div class="col-md-auto">
-      <h1 class="display-4" > {{title}}</h1>
+      <h1 class="display-4"> {{title}}</h1>
     </div>
 
   </div>
   <div class="row mb-3 justify-content-md-center">
     <div class="col-sm-3">
-      <button type="button" class="btn btn-primary btn-lg btn-block" (click) ="toAdd()"> Alta Titular</button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" (click)="toAdd()"> Alta Titular</button>
     </div>
     <div class="col-sm-3">
-      <button type="button" class="btn btn-primary btn-lg btn-block" (click) ="toList()"> Lista de Titulares</button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" (click)="toList()"> Lista de Titulares</button>
     </div>
   </div>
 
   <div class="row mb-3 justify-content-md-center">
-  <div class="col-sm-8" *ngIf="create">
+    <div class="col-sm-8" *ngIf="update">
+      <app-update [actualizarT] = "actualizar" (listar)="toReList()"></app-update>
+    </div>
+    <div class="col-sm-8" *ngIf="list">
+      <app-list [actualizado] = "actualizado" (actualizar)="toUpdate($event)" ></app-list>
+    </div>
+    <div class="col-sm-8" *ngIf="create">
       <app-init></app-init>
     </div>
   </div>
 
-  <div class="row mb-3 justify-content-md-center">
-  <div  class="col-sm-8" *ngIf="list">
-    <app-list></app-list>
-  </div>
-  </div>
-
 
   <div class="row mb-3 justify-content-md-center">
-  <div  class="col-sm-8" >
-  <router-outlet></router-outlet>
-  </div>
+    <div class="col-sm-8">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
 

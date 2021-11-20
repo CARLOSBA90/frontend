@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { MatTableModule } from '@angular/material/table';
 import { UpdateComponent } from './update/update.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UpdateComponent } from './update/update.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

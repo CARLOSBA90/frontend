@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { InitService } from '../init.service';
 import { FormControl, FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { titular } from '../model/titular.model';
@@ -7,6 +7,7 @@ import { juridica } from '../model/juridica.model';
 import { mensaje } from '../model/mensaje.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { throwIfEmpty } from 'rxjs/operators';
+import { actualizar } from '../model/actualizar.model';
 
 @Component({
   selector: 'app-update',
@@ -20,6 +21,8 @@ export class UpdateComponent implements OnInit {
   fisicaUpdate!: fisica;
   juridicaUpdate!: juridica;
   isLoaded : boolean = false;
+  @Input() actualizarT : actualizar;
+  @Output() listar = new EventEmitter<Boolean>();
 
   constructor(private initService: InitService,
     private router: Router, private route: ActivatedRoute) {
@@ -28,9 +31,8 @@ export class UpdateComponent implements OnInit {
     }
 
   ngOnInit(): void {
-   console.log("entrada a updatecomponent");
-    this.id = this.route.snapshot.params['id'];
-    this.type = this.route.snapshot.params['type'];
+    this.id = this.actualizarT.getId();
+    this.type = this.actualizarT.getType();
 
     if(this.type==1){
         this.initService.getFisicaById(this.id).subscribe((res: any) =>{
@@ -56,12 +58,8 @@ export class UpdateComponent implements OnInit {
          }else if(this.type==2){
         this.initService.updateJuridica(this.id, this.juridicaUpdate).subscribe( /*(res: any) =>{}*/);
     }
-
-    this.goToList();
+    this.listar.emit();
   }
 
-  goToList(){
-    this.router.dispose;
-  }
 
 }

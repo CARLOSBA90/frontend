@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { InitService } from '../init.service';
 import { FormControl, FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { titular } from '../model/titular.model';
@@ -21,15 +21,22 @@ export class ListComponent implements OnInit {
   fisicas : fisica [];
   mensaje: mensaje = new mensaje();
   @Output() actualizar = new EventEmitter<actualizar>();
+  @Input('actualizado') actualizado : boolean;
 
 
   constructor(private initService: InitService,
-    private router: Router, private fb: FormBuilder) {
-     }
+    private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.list();
+   if(this.actualizado) {
+     this.list();
+   }
   }
+  ngOnDestroy() {
+    /// destruir el servicio para refrescar correctamente la lista
+  }
+
 
   deleteTitular(id: number){
     this.initService.deleteTitular(id).subscribe( (res: any) => {
@@ -39,10 +46,7 @@ export class ListComponent implements OnInit {
   }
 
   updateTitular(id: number, type: number){
-   // this.router.dispose;
-   //  this.router.navigate(['/update', id, type]);
-   this.actualizar.emit(new actualizar(id,type));
-
+    this.actualizar.emit(new actualizar(id,type));
   }
 
   list(){
@@ -54,10 +58,6 @@ export class ListComponent implements OnInit {
       this.juridicas = res;
     });
 
-  }
-
-  refresh(){
-    this.list();
   }
 
 

@@ -17,6 +17,8 @@ export class AppComponent{
   create = false;
   list = false;
   update = false;
+  actualizar: actualizar;
+  actualizado: boolean = false;
 
   toAdd(){
     this.create = true;
@@ -24,16 +26,28 @@ export class AppComponent{
     this.update = false;
          }
 
+
+  toUpdate(actualizar1: actualizar){
+    this.create = false;
+    this.list = false;
+    this.update = true;
+    this.actualizar = actualizar1;
+
+  }
+
   toList(){
     this.create = false;
     this.list = true;
     this.update = false;
   }
-  toUpdate(actualizar: actualizar){
+
+  toReList(){
     this.create = false;
-    this.list = false;
-    this.update = true;
+    this.list = true;
+    this.update = false;
+    this.actualizado = true;
   }
+
  }
 
 
