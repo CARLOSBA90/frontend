@@ -17,10 +17,10 @@
 
   <div class="row mb-3 justify-content-md-center">
     <div class="col-sm-8" *ngIf="update">
-      <app-update [actualizarT] = "actualizar" (listar)="toReList()"></app-update>
+      <app-update [actualizarT] = "actualizar" (listar)="toList()"></app-update>
     </div>
     <div class="col-sm-8" *ngIf="list">
-      <app-list [actualizado] = "actualizado" (actualizar)="toUpdate($event)" ></app-list>
+      <app-list (actualizar)="toUpdate($event)"></app-list>
     </div>
     <div class="col-sm-8" *ngIf="create">
       <app-init></app-init>

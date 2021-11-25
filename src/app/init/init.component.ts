@@ -58,7 +58,6 @@ export class InitComponent implements OnInit {
       (data: any) => {
         this.fisica = new fisica();
         this.mensaje = data;
-        console.log(data);
       },
       (error) => console.log(error)
     );

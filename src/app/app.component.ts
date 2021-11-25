@@ -41,13 +41,6 @@ export class AppComponent{
     this.update = false;
   }
 
-  toReList(){
-    this.create = false;
-    this.list = true;
-    this.update = false;
-    this.actualizado = true;
-  }
-
  }
 
 

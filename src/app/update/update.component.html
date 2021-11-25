@@ -1,95 +1,65 @@
+<div *ngIf="isLoaded" class="row justify-content-center bg-light text-dark">
+    <h1 style="text-align: center">ACTUALIZACIÓN</h1>
 
-<div *ngIf="isLoaded">
-<div id="panel">
-  <h2>ACTUALIZACIÓN</h2>
-
+<div id="panel" class="col-8">
   <form (ngSubmit) = "onSubmit()">
-    <table>
+  <ng-container *ngIf="type == 1">
+    <div class="form-group">
+      <label for="rut">RUT</label>
+      <input type="text" id = "rut"
+      [(ngModel)] = "fisicaUpdate.rut" class="form-control" name = "rut" [ngModelOptions]="{standalone: true}">
+      </div>
 
-  <ng-container *ngIf="type ==1">
-    <tr>
-      <td>
-        <label>RUT</label>
-      </td>
-      <td>
-        <input type="text" id = "rut"
-          [(ngModel)] = "fisicaUpdate.rut" name = "rut" [ngModelOptions]="{standalone: true}">
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <label>Nombre</label>
-      </td>
-      <td>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
         <input type="text" id = "nombre"
-        [(ngModel)] = "fisicaUpdate.nombre" name = "nombre" [ngModelOptions]="{standalone: true}">
-      </td>
-    </tr>
+        [(ngModel)] = "fisicaUpdate.nombre" class="form-control" name = "nombre" [ngModelOptions]="{standalone: true}">
+        </div>
 
-    <tr>
-      <td>
-        <label>Apellido</label>
-      </td>
-      <td>
-        <input type="text" id = "apellido"
-          [(ngModel)] = "fisicaUpdate.apellido" name = "apellido" [ngModelOptions]="{standalone: true}">
-      </td>
-    </tr>
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" id = "apellido"
+          [(ngModel)] = "fisicaUpdate.apellido" class="form-control" name = "apellido" [ngModelOptions]="{standalone: true}">
+        </div>
 
-    <tr>
-      <td>
-        <label>CC</label>
-      </td>
-      <td>
-        <input type="number" id = "cc"
-        [(ngModel)] = "fisicaUpdate.cc" name = "cc" max="199999" [ngModelOptions]="{standalone: true}">
-      </td>
-    </tr>
+        <div class="form-group">
+          <label for="cc">C.C</label>
+          <input type="number" id = "cc"
+        [(ngModel)] = "fisicaUpdate.cc" class="form-control" name = "cc"  max="199999" [ngModelOptions]="{standalone: true}">
+          </div>
   </ng-container>
 
   <ng-container *ngIf="type == 2">
+    <div class="form-group">
+      <label for="rut">RUT</label>
+      <input type="text" id = "rut"
+      [(ngModel)] = "juridicaUpdate.rut" class="form-control" name = "rut" [ngModelOptions]="{standalone: true}">
+    </div>
 
-    <tr>
-      <td>
-        <label>RUT</label>
-      </td>
-      <td>
-        <input type="text" id = "rut"
-        [(ngModel)] = "juridicaUpdate.rut" name = "rut" [ngModelOptions]="{standalone: true}">
-      </td>
-    </tr>
 
-    <tr>
-      <td>
-        <label> Razón Social</label>
-      </td>
-      <td>
-        <input type="text" id = "razonSocial"
-        [(ngModel)] = "juridicaUpdate.razonSocial" name = "razonSocial" [ngModelOptions]="{standalone: true}">
-      </td>
-    </tr>
+    <div class="form-group">
+      <label for="razonSocial">Razón Social</label>
+      <input type="text" id = "razonSocial"
+        [(ngModel)] = "juridicaUpdate.razonSocial" class="form-control" name = "razonSocial" [ngModelOptions]="{standalone: true}">
 
-    <tr>
-      <td>
-        <label> Año de fundación</label>
-      </td>
-      <td>
-        <input type="number" id = "anioFundacion"
-        [(ngModel)] = "juridicaUpdate.anioFundacion" name = "anioFundacion"
-        min="1880" max="2021" step="1" value="2020" [ngModelOptions]="{standalone: true}"/>
-      </td>
-    </tr>
+    </div>
+
+    <div >
+      <label for="anioFundacion">Año de fundación</label>
+      <input type="number" id = "anioFundacion"
+      [(ngModel)] = "juridicaUpdate.anioFundacion" class="form-control" name = "anioFundacion"
+      min="1880" max="2021" step="1" value="2020" [ngModelOptions]="{standalone: true}"/>
+    </div>
 
   </ng-container>
+  <div class="col-md-12 text-center">
+    <button type ="submit" class="btn btn-primary mt-3 auto">Actualizar</button></div>
+
+</form>
 
 
 
-     <br>
-    <button type ="submit" class="btn btn-primary">Actualizar</button>
-  </table>
-  </form>
-
+<div>{{mensaje.texto}}</div>
 
 
   </div>

@@ -23,11 +23,14 @@ export class UpdateComponent implements OnInit {
   isLoaded : boolean = false;
   @Input() actualizarT : actualizar;
   @Output() listar = new EventEmitter<Boolean>();
+  mensaje: mensaje = new mensaje();
+
 
   constructor(private initService: InitService,
     private router: Router, private route: ActivatedRoute) {
       this.fisicaUpdate = new fisica();
       this.juridicaUpdate = new juridica();
+      this.mensaje.texto = "";
     }
 
   ngOnInit(): void {
@@ -51,15 +54,26 @@ export class UpdateComponent implements OnInit {
 
   }
 
-  onSubmit(){
+   onSubmit2(){
+  /*  var promise = Promise.resolve(this.toUpdate());
 
-    if(this.type==1){
-        this.initService.updateFisica(this.id, this.fisicaUpdate).subscribe( /*(res: any) =>{}*/);
-         }else if(this.type==2){
-        this.initService.updateJuridica(this.id, this.juridicaUpdate).subscribe( /*(res: any) =>{}*/);
-    }
-    this.listar.emit();
+   await promise.then( () => {
+     this.mensaje.texto = "Actualizando..";
+
+   });
+   this.listar.emit();*/
   }
 
-
+  onSubmit(){
+    if(this.type==1){
+      this.initService.updateFisica(this.id, this.fisicaUpdate).subscribe( (res: any) =>{
+         this.mensaje = res;
+         this.listar.emit()
+      });
+       }else if(this.type==2){
+      this.initService.updateJuridica(this.id, this.juridicaUpdate).subscribe( (res: any) =>{
+        this.mensaje = res;
+        this.listar.emit()
+      }); }
+}
 }
