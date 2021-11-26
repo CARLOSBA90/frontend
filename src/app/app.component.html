@@ -1,23 +1,19 @@
 <div class="container">
-  <div class="row mb-3 justify-content-md-center">
-
-    <div class="col-md-auto">
-      <h1 class="display-4"> {{title}}</h1>
-    </div>
-
+  <div class="row justify-content-center">
+    <h1>{{title}}</h1>
   </div>
   <div class="row mb-3 justify-content-md-center">
-    <div class="col-sm-3">
+    <div class="col-3">
       <button type="button" class="btn btn-primary btn-lg btn-block" (click)="toAdd()"> Alta Titular</button>
     </div>
-    <div class="col-sm-3">
+    <div class="col-3">
       <button type="button" class="btn btn-primary btn-lg btn-block" (click)="toList()"> Lista de Titulares</button>
     </div>
   </div>
 
   <div class="row mb-3 justify-content-md-center">
     <div class="col-sm-8" *ngIf="update">
-      <app-update [actualizarT] = "actualizar" (listar)="toList()"></app-update>
+      <app-update [actualizarT]="actualizar" (listar)="toList()"></app-update>
     </div>
     <div class="col-sm-8" *ngIf="list">
       <app-list (actualizar)="toUpdate($event)"></app-list>
