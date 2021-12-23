@@ -1,0 +1,66 @@
+<div *ngIf="isLoaded" class="row justify-content-center bg-light text-dark">
+    <h2>ACTUALIZACIÓN</h2>
+
+<div id="panel" class="col-8">
+  <form (ngSubmit) = "onSubmit()">
+  <ng-container *ngIf="type == 1">
+    <div class="form-group">
+      <label for="rut">RUT</label>
+      <input type="text" id = "rut"
+      [(ngModel)] = "fisicaUpdate.rut" class="form-control" name = "rut" [ngModelOptions]="{standalone: true}">
+      </div>
+
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id = "nombre"
+        [(ngModel)] = "fisicaUpdate.nombre" class="form-control" name = "nombre" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" id = "apellido"
+          [(ngModel)] = "fisicaUpdate.apellido" class="form-control" name = "apellido" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="form-group">
+          <label for="cc">C.C</label>
+          <input type="number" id = "cc"
+        [(ngModel)] = "fisicaUpdate.cc" class="form-control" name = "cc"  max="199999" [ngModelOptions]="{standalone: true}">
+          </div>
+  </ng-container>
+
+  <ng-container *ngIf="type == 2">
+    <div class="form-group">
+      <label for="rut">RUT</label>
+      <input type="text" id = "rut"
+      [(ngModel)] = "juridicaUpdate.rut" class="form-control" name = "rut" [ngModelOptions]="{standalone: true}">
+    </div>
+
+
+    <div class="form-group">
+      <label for="razonSocial">Razón Social</label>
+      <input type="text" id = "razonSocial"
+        [(ngModel)] = "juridicaUpdate.razonSocial" class="form-control" name = "razonSocial" [ngModelOptions]="{standalone: true}">
+
+    </div>
+
+    <div >
+      <label for="anioFundacion">Año de fundación</label>
+      <input type="number" id = "anioFundacion"
+      [(ngModel)] = "juridicaUpdate.anioFundacion" class="form-control" name = "anioFundacion"
+      min="1880" max="2021" step="1" value="2020" [ngModelOptions]="{standalone: true}"/>
+    </div>
+
+  </ng-container>
+  <div class="col-md-12 text-center">
+    <button type ="submit" class="btn btn-primary mt-3 auto">Actualizar</button></div>
+
+</form>
+
+
+
+<div>{{mensaje.texto}}</div>
+
+
+  </div>
+</div>

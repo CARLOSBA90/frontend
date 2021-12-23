@@ -1,0 +1,7 @@
+table {
+  width: 70%;
+}
+
+mat-header-cell, mat-cell {
+  justify-content: center;
+}

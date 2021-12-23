@@ -1,0 +1,88 @@
+<div class="row justify-content-center" id="panel">
+  <div class="col-10">
+    <h2>REGISTRO DE CUENTA</h2>
+
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+      <div class="form-group row mb-3">
+        <label for="opciones" class="col-sm-2 col-form-label sr-only"> Tipo de cuenta </label>
+        <div class="col-sm-10" id="opciones">
+          <div class="form-check form-check-inline">
+            <input type="radio" value="fisica" name="tipo" formControlName="tipo" id="opcionFisica">
+            <label class="form-check-label" for="opcionFisica"> Fisica</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input type="radio" value="juridica" name="tipo" formControlName="tipo" id="opcionJuridica">
+            <label class="form-check-label" for="opcionJuridica"> Juridica</label>
+          </div>
+        </div>
+      </div>
+      <ng-container *ngIf="tipo.value === 'fisica'">
+
+        <div class="form-group row mb-3">
+          <label class="col-sm-2 col-form-label" for="rut">RUT</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" id="rut" [(ngModel)]="fisica.rut" name="rut"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+
+        <div class="form-group row mb-3">
+          <label class="col-sm-2 col-form-label" for="nombre">Nombre</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" id="nombre" [(ngModel)]="fisica.nombre" name="nombre"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+
+        <div class="form-group row mb-3">
+          <label class="col-sm-2 col-form-label" for="apellido">Apellido</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" id="apellido" [(ngModel)]="fisica.apellido" name="apellido"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+
+        <div class="form-group row mb-3">
+          <label class="col-sm-2 col-form-label" for="cc">CC</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="number" id="cc" [(ngModel)]="fisica.cc" name="cc" max="199999"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="tipo.value === 'juridica'">
+
+        <div class="form-group row mb-3">
+          <label class="col-sm-2 col-form-label" for="rut">RUT</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" id="rut" [(ngModel)]="juridica.rut" name="rut"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+
+        <div class="form-group row mb-3">
+          <label class="col-sm-2 col-form-label" for="razonSocial"> Razón Social</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" id="razonSocial" [(ngModel)]="juridica.razonSocial"
+              name="razonSocial" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+
+        <div class="form-group row mb-3">
+          <label class="col-sm-2 col-form-label" for="anioFundacion"> Año de fundación</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="number" id="anioFundacion" [(ngModel)]="juridica.anioFundacion"
+              name="anioFundacion" min="1880" max="2021" step="1" value="2020" [ngModelOptions]="{standalone: true}" />
+          </div>
+        </div>
+
+      </ng-container>
+      <div class="col-md-12 text-center">
+      <button class="btn btn-primary mb-2" type="submit">Enviar</button></div>
+    </form>
+    {{mensaje.texto}}
+  </div>
+</div>

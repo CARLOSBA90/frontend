@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { RestService } from './rest.service';
+import { actualizar } from './model/actualizar.model';
 
 @Component({
   selector: 'app-root',
@@ -13,27 +13,35 @@ import { RestService } from './rest.service';
 
 @Injectable()
 export class AppComponent{
-  title = 'Titulo';
-  text = 'Texto de ejemplo';
+  title = 'CRUD: Titulares';
+  create = false;
+  list = false;
+  update = false;
+  actualizar: actualizar;
+  actualizado: boolean = false;
 
- //constructor(private http: HttpClient){}
- constructor(private RestService: RestService){}
- ngOnInit (){
-   this.cargarData();
- /*  this.http.get("http://localhost:8080/").subscribe((resp:any) =>{
-         this.text = resp;
-   }),
-   (error:any) =>{
-     console.log(error)
-   }*/
-   
+  toAdd(){
+    this.create = true;
+    this.list = false;
+    this.update = false;
+         }
+
+
+  toUpdate(actualizar1: actualizar){
+    this.create = false;
+    this.list = false;
+    this.update = true;
+    this.actualizar = actualizar1;
+
+  }
+
+  toList(){
+    this.create = false;
+    this.list = true;
+    this.update = false;
+  }
+
  }
 
- public cargarData(){
-    this.RestService.get("http://localhost:8080/")
-  .subscribe((respuesta:any) => {
-    console.log(respuesta)
-  })
- }
 
-}
+
