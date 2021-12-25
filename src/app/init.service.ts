@@ -11,9 +11,9 @@ import { juridica } from './model/juridica.model';
 })
 export class InitService {
 
-  private  get = 'http://localhost:8080/api/titular/get';
+  private  get = 'http://localhost:8080/titular/get';
 
-  private baseURL = "http://localhost:8080/api/titular/";
+  private baseURL = "http://localhost:8080/titular/";
 
   constructor( private http: HttpClient) {}
 
