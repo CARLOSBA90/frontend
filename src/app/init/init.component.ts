@@ -75,7 +75,14 @@ export class InitComponent implements OnInit {
   onSubmit() {
     /// Requerido: metodos de validación para enviar correctamente la data
     if (!this.isObjectEmpty(this.fisica)) {
-      this.saveFisica(this.fisica);
+
+      var rut = (<HTMLInputElement>document.getElementById("rut")).value;
+      var nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
+      var apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
+      var cc = Number((<HTMLInputElement>document.getElementById("cc")).value)>0? true: false;
+
+      if(rut!="" && nombre!="" && apellido!="" && cc)
+      this.saveFisica(this.fisica); else alert("Complete todo los campos");
     } else if (!this.isObjectEmpty(this.juridica)) {
       this.saveJuridica(this.juridica);
     }
