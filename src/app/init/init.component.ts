@@ -13,6 +13,7 @@ import { juridica } from '../model/juridica.model';
 import { mensaje } from '../model/mensaje.model';
 import { Router } from '@angular/router';
 import { throwIfEmpty } from 'rxjs/operators';
+import { TooltipPosition } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-init',
@@ -73,18 +74,22 @@ export class InitComponent implements OnInit {
   }
 
   onSubmit() {
+    let opcion = this.formulario.get('tipo')?.value;
     /// Requerido: metodos de validación para enviar correctamente la data
-    if (!this.isObjectEmpty(this.fisica)) {
-
-      var rut = (<HTMLInputElement>document.getElementById("rut")).value;
+    var rut = (<HTMLInputElement>document.getElementById("rut")).value;
+    if (opcion==="fisica") {
+      var nombreRUT = rut;
       var nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
       var apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
       var cc = Number((<HTMLInputElement>document.getElementById("cc")).value)>0? true: false;
-
       if(rut!="" && nombre!="" && apellido!="" && cc)
-      this.saveFisica(this.fisica); else alert("Complete todo los campos");
-    } else if (!this.isObjectEmpty(this.juridica)) {
-      this.saveJuridica(this.juridica);
+      this.saveFisica(this.fisica); else alert("Complete correctamente todo los campos");
+    } else if (opcion==="juridica") {
+      var razonSocial = (<HTMLInputElement>document.getElementById("razonSocial")).value;
+      var anio = Number((<HTMLInputElement>document.getElementById("anioFundacion")).value);
+      var fecha = (anio>=1880 && anio<=2022)? true: false;
+      if(rut!="" && razonSocial!="" && fecha)
+      this.saveJuridica(this.juridica); else alert("Complete correctamente todo los campos");
     }
   }
 

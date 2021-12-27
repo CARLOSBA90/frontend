@@ -48,7 +48,7 @@
           <label class="col-sm-2 col-form-label" for="cc">CC</label>
           <div class="col-sm-10">
             <input class="form-control" type="text" id="cc" [(ngModel)]="fisica.cc" name="cc"
-              [ngModelOptions]="{standalone: true}"  oninput="this.value = this.value.replace(/[^0-9]/g, '');" minlength="1" maxlength="8" required/>
+              [ngModelOptions]="{standalone: true}"  oninput="this.value = this.value.replace(/[^0-9]/g, '');" minlength="1" maxlength="8" placeholder="" required/>
           </div>
         </div>
       </ng-container>
