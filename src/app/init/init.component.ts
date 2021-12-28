@@ -28,7 +28,13 @@ export class InitComponent implements OnInit {
   ) {}
 
   formulario: FormGroup = this.fb.group({
-    tipo: ['', Validators.required],
+    tipo:     ['', Validators.required],
+    rut:      ['', Validators.required],
+    nombre:   ['', Validators.required],
+    apellido: ['', Validators.required],
+    cc:       ['', Validators.required],
+    razonSocial:   ['', Validators.required],
+    anioFundacion: ['', Validators.required],
   });
 
   fisica: fisica = new fisica();
@@ -46,10 +52,12 @@ export class InitComponent implements OnInit {
 
   handleTipo() {
     this.tipo.valueChanges.subscribe((res: any) => {
+      if (this.mensaje.texto!="") this.mensaje.texto = "";
+
       if (res == 'fisica') {
         this.juridica = new juridica(); // poniendo en valor nulo el objecto //
       } else if (res == 'juridica') {
-        this.fisica = new fisica(); // poniendo en valor nulo el objecto //
+        this.fisica   = new fisica(); // poniendo en valor nulo el objecto //
       }
     });
   }
@@ -76,18 +84,17 @@ export class InitComponent implements OnInit {
   onSubmit() {
     let opcion = this.formulario.get('tipo')?.value;
     /// Requerido: metodos de validación para enviar correctamente la data
-    var rut = (<HTMLInputElement>document.getElementById("rut")).value;
+      var rut  = this.formulario.get('rut')?.value;
     if (opcion==="fisica") {
-      var nombreRUT = rut;
-      var nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-      var apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
-      var cc = Number((<HTMLInputElement>document.getElementById("cc")).value)>0? true: false;
+      var nombre   = this.formulario.get('nombre')?.value;
+      var apellido = this.formulario.get('apellido')?.value;
+      var cc       = this.formulario.get('cc')?.value>0? true: false;
       if(rut!="" && nombre!="" && apellido!="" && cc)
       this.saveFisica(this.fisica); else alert("Complete correctamente todo los campos");
     } else if (opcion==="juridica") {
-      var razonSocial = (<HTMLInputElement>document.getElementById("razonSocial")).value;
-      var anio = Number((<HTMLInputElement>document.getElementById("anioFundacion")).value);
-      var fecha = (anio>=1880 && anio<=2022)? true: false;
+      var razonSocial = this.formulario.get('razonSocial')?.value;
+      var anio        = this.formulario.get('anioFundacion')?.value;
+      var fecha       = (anio>=1880 && anio<=2022)? true: false;
       if(rut!="" && razonSocial!="" && fecha)
       this.saveJuridica(this.juridica); else alert("Complete correctamente todo los campos");
     }

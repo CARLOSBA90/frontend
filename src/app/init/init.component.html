@@ -1,11 +1,10 @@
 <div class="row justify-content-center" id="panel">
-  <div class="col-10">
+  <div class="col-8">
     <h2>REGISTRO DE CUENTA</h2>
 
     <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
       <div class="form-group row mb-3">
-        <label for="opciones" class="col-sm-2 col-form-label sr-only"> Tipo de cuenta </label>
         <div class="col-sm-10" id="opciones">
           <div class="form-check form-check-inline">
             <input type="radio" value="fisica" name="tipo" formControlName="tipo" id="opcionFisica">
@@ -23,32 +22,32 @@
         <div class="form-group row mb-3">
           <label class="col-sm-2 col-form-label" for="rut">RUT</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="rut" [(ngModel)]="fisica.rut" name="rut"
-              [ngModelOptions]="{standalone: true}" minlength="2" maxlength="20" required>
+            <input class="form-control" type="text" id="rut" formControlName="rut" [(ngModel)]="fisica.rut" name="rut"
+               minlength="2" maxlength="20" required>
           </div>
         </div>
 
         <div class="form-group row mb-3">
           <label class="col-sm-2 col-form-label" for="nombre">Nombre</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="nombre" [(ngModel)]="fisica.nombre" name="nombre"
-              [ngModelOptions]="{standalone: true}" minlength="2" maxlength="50" required>
+            <input class="form-control" type="text" id="nombre" formControlName="nombre" [(ngModel)]="fisica.nombre" name="nombre"
+               minlength="2" maxlength="50" required>
           </div>
         </div>
 
         <div class="form-group row mb-3">
           <label class="col-sm-2 col-form-label" for="apellido">Apellido</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="apellido" [(ngModel)]="fisica.apellido" name="apellido"
-              [ngModelOptions]="{standalone: true}" minlength="2" maxlength="50" required>
+            <input class="form-control" type="text" id="apellido" formControlName="apellido" [(ngModel)]="fisica.apellido" name="apellido"
+               minlength="2" maxlength="50" required>
           </div>
         </div>
 
         <div class="form-group row mb-3">
           <label class="col-sm-2 col-form-label" for="cc">CC</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="cc" [(ngModel)]="fisica.cc" name="cc"
-              [ngModelOptions]="{standalone: true}"  oninput="this.value = this.value.replace(/[^0-9]/g, '');" minlength="1" maxlength="8" placeholder="" required/>
+            <input class="form-control" type="text" id="cc" formControlName="cc" [(ngModel)]="fisica.cc" name="cc"
+               oninput="this.value = this.value.replace(/[^0-9]/g, '');" minlength="1" maxlength="8" placeholder="" required/>
           </div>
         </div>
       </ng-container>
@@ -58,24 +57,24 @@
         <div class="form-group row mb-3">
           <label class="col-sm-2 col-form-label" for="rut">RUT</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="rut" [(ngModel)]="juridica.rut" name="rut"
-              [ngModelOptions]="{standalone: true}"  minlength="2" maxlength="20" required>
+            <input class="form-control" type="text" id="rut" formControlName="rut" [(ngModel)]="juridica.rut" name="rut"
+                minlength="2" maxlength="20" required>
           </div>
         </div>
 
         <div class="form-group row mb-3">
           <label class="col-sm-2 col-form-label" for="razonSocial"> Razón Social</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="razonSocial" [(ngModel)]="juridica.razonSocial"
-              name="razonSocial" [ngModelOptions]="{standalone: true}" minlength="2" maxlength="50" required>
+            <input class="form-control" type="text" id="razonSocial" formControlName="razonSocial" [(ngModel)]="juridica.razonSocial"
+              name="razonSocial"  minlength="2" maxlength="50" required>
           </div>
         </div>
 
         <div class="form-group row mb-3">
           <label class="col-sm-2 col-form-label" for="anioFundacion"> Año de fundación</label>
           <div class="col-sm-10">
-            <input class="form-control" type="number" id="anioFundacion" [(ngModel)]="juridica.anioFundacion"
-              name="anioFundacion" min="1880" max="2021" step="1" placeholder="2022" [ngModelOptions]="{standalone: true}" required />
+            <input class="form-control" type="number" id="anioFundacion" formControlName="anioFundacion"  [(ngModel)]="juridica.anioFundacion"
+              name="anioFundacion" min="1880" max="2021" step="1" placeholder="2022" required />
           </div>
         </div>
 

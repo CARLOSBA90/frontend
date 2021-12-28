@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Frontend</title>
@@ -8,11 +9,11 @@
   <style>
 
   </style>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
   <style>
-    @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 
     html,
     body {
@@ -41,11 +42,37 @@
     table.mat-table {
       width: 100% !important;
     }
+
+    .main {
+      padding-bottom: 30px;
+    }
+
+    footer {
+      position: fixed;
+      height: 40px;
+      bottom: 0;
+      width: 100%;
+    }
   </style>
 
 </head>
 </head>
-<body class="mat-typography">
-  <app-root></app-root>
+
+<body>
+  <div class="main">
+    <app-root></app-root>
+  </div>
+  <footer class="bg-primary text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center p-3 text-light">
+      © 2022 Copyright: Carlos Peña -
+      <a class="text-light" href="http://www.carlos90.com/">www.carlos90.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

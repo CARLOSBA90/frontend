@@ -1,7 +1,5 @@
 <div class="row justify-content-center">
-
-
-  <div class="col-10">
+  <div class="col-12">
     <h2>LISTA DE PERSONAS FISICAS</h2>
 
 
@@ -33,14 +31,14 @@
 
       <!-- delete Column -->
       <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef> Borrar </th>
+        <th mat-header-cell *matHeaderCellDef> Acción </th>
         <td mat-cell *matCellDef="let element"> <button type="button" class="btn btn-danger"
             (click)="deleteTitular(element.id)" type="button"> Borrar</button> </td>
       </ng-container>
 
       <!-- update Column -->
       <ng-container matColumnDef="update">
-        <th mat-header-cell *matHeaderCellDef> Actualizar </th>
+        <th mat-header-cell *matHeaderCellDef> Acción </th>
         <td mat-cell *matCellDef="let element"> <button type="button" class="btn btn-primary"
             (click)="updateTitular(element.id,1)"> Actualizar</button>
         </td>
@@ -77,14 +75,14 @@
 
       <!-- delete Column -->
       <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef> Borrar </th>
+        <th mat-header-cell *matHeaderCellDef> Acción </th>
         <td mat-cell *matCellDef="let element"> <button type="button" class="btn btn-danger"
             (click)="deleteTitular(element.id)"> Borrar</button> </td>
       </ng-container>
 
       <!-- update Column -->
       <ng-container matColumnDef="update">
-        <th mat-header-cell *matHeaderCellDef> Actualizar </th>
+        <th mat-header-cell *matHeaderCellDef> Acción </th>
         <td mat-cell *matCellDef="let element"> <button type="button" class="btn btn-primary"
             (click)="updateTitular(element.id,2)"> Actualizar</button>
         </td>
